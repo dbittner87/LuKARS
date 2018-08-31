@@ -1,0 +1,43 @@
+recharge area;2500000
+E_b ini;2900
+k_b;0.00043
+hyd 1;0.04
+l_hyd_1;100
+k_e_1;0
+E_1_ini;1
+e_min_1;0 
+e_max_1;1   
+alpha_1;0
+k_is_1;0 
+k_sec_1;0.9
+e_sec_1;0       
+hyd_2;0.13
+l_hyd_2;1600
+k_e_2;90
+E_2_ini;1
+e_min_2;23 
+e_max_2;31   
+alpha_2;0.9
+k_is_2;0.02
+k_sec_2;0.095
+e_sec_2;35
+hyd_3;0.56
+l_hyd_3;900
+k_e_3;85
+E_3_ini;1
+e_min_3;60 
+e_max_3;120   
+alpha_3;0.8
+k_is_3;0.0055
+k_sec_3;0.026
+e_sec_3;180
+hyd_4;0.27
+l_hyd_4;960
+k_e_4;77
+E_4_ini;1
+e_min_4;90 
+e_max_4;200   
+alpha_4;0.55
+k_is_4;0.0025
+k_sec_4;0.022
+e_sec_4;380
