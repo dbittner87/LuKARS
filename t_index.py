@@ -1,10 +1,9 @@
-def t_index_model(model_period, temperature_ts, melt_factor, t_threshold):
+def t_index_model(temperature_ts, melt_factor, t_threshold):
 
-    import pandas as pd
-    temp = temperature_ts
-    mf = melt_factor
-    t = t_threshold
-    m_rate = {}
+    temp   = temperature_ts
+    mf     = melt_factor
+    t      = t_threshold
+    m_rate = [0] * len(temp)
 
     for i in range(len(temp)):
         if(temp[i] <= t):
@@ -12,6 +11,4 @@ def t_index_model(model_period, temperature_ts, melt_factor, t_threshold):
         else:
             m_rate[i] = mf * (temp[i] - t)
             
-    m_rate = pd.Series(m_rate)
-    m_rate.index = range(len(model_period))
     return(m_rate);
