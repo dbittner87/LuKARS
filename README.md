@@ -1,7 +1,6 @@
 # LuKARS
 The LuKARS model is a lumped karst hydrological model that was proposed to perform land use change impact 
 studies in karstic environments (Bittner et al., 2018).
-The model was 
 
 The following model functions are provided and should be applied in the presented order.
 
@@ -34,8 +33,7 @@ The model code of LuKARS as presented in Bittner et al. (2018).
 Required input: sink_n_source_hyd_1, sink_n_source_hyd_2, sink_n_source_hyd_3, sink_n_source_hyd_4 and input_parameters.
 Note that the current version of the model only allows to simulate 4 hydrotopes (as presented for the Kerschbaum spring in Waidhofen,
 Austria, in Bittner et al. (2018)). An example application is given in model_kerschbaum.py. An example for the input parameters of
-the model is given in kerschbaum_input.txt. The relevant time series for this model run are provided in kerschbaum_py.csv and
-snow_waidhofen.csv.
+the model is given in kerschbaum_input.txt. The relevant time series for this model run are provided in kerschbaum_py.csv.
 
 
 References:
