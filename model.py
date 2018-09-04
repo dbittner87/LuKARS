@@ -1,129 +1,123 @@
 def lukars(sink_n_source_hyd_1, sink_n_source_hyd_2, sink_n_source_hyd_3,\
            sink_n_source_hyd_4, input_parameters, time_step = 1):
+        
+    sns1        = list(sink_n_source_hyd_1)
+    sns2        = list(sink_n_source_hyd_2)
+    sns3        = list(sink_n_source_hyd_3)
+    sns4        = list(sink_n_source_hyd_4)
     
-    import pandas as pd
+    a_hyd1      = input_parameters[0] * input_parameters[3]  
+    a_hyd2      = input_parameters[0] * input_parameters[13]
+    a_hyd3      = input_parameters[0] * input_parameters[23]
+    a_hyd4      = input_parameters[0] * input_parameters[33]
     
-    sns1 = pd.Series(sink_n_source_hyd_1)
-    sns1.index = range(len(sink_n_source_hyd_1))
-    sns2 = pd.Series(sink_n_source_hyd_2)
-    sns2.index = range(len(sink_n_source_hyd_1))
-    sns3 = pd.Series(sink_n_source_hyd_3)
-    sns3.index = range(len(sink_n_source_hyd_1))
-    sns4 = pd.Series(sink_n_source_hyd_4)
-    sns4.index = range(len(sink_n_source_hyd_1))
-    
-    a_hyd1   = input_parameters[0] * input_parameters[3]  
-    a_hyd2   = input_parameters[0] * input_parameters[13]
-    a_hyd3   = input_parameters[0] * input_parameters[23]
-    a_hyd4   = input_parameters[0] * input_parameters[33]
-    
-    Q_tot    = pd.Series(index = range(len(sns1)))
-    Q_tot[0] = 1
-    Q_is    = pd.Series(index = range(len(sns1)))
-    Q_is[0]   = 1
-    Q_b    = pd.Series(index = range(len(sns1)))
-    Q_b[0]   = 1
-    Q_e    = pd.Series(index = range(len(sns1)))
-    Q_e[0]   = 1
-    Q_sec    = pd.Series(index = range(len(sns1)))
-    Q_sec[0]   = 1
+    Q_tot       = [0] * (len(sns1) + 1)
+    Q_tot[0]    = 1
+    Q_is        = [0] * (len(sns1) + 1)
+    Q_is[0]     = 1
+    Q_b         = [0] * (len(sns1) + 1)
+    Q_b[0]      = 1
+    Q_e         = [0] * (len(sns1) + 1)
+    Q_e[0]      = 1
+    Q_sec       = [0] * (len(sns1) + 1)
+    Q_sec[0]    = 1
     
     # Linear storage
-    E_b    = pd.Series(index = range(len(sns1)))
-    E_b[0]   = input_parameters[1]
-    k_b      = input_parameters[2]       
+    E_b         = [0] * (len(sns1) + 1)
+    E_b[0]      = input_parameters[1]
+    k_b         = input_parameters[2]       
     
     ### Hydrotope 1 #####
     # Non-Linear storage
-    l_hyd_1 = input_parameters[4]
-    k_e_1    = input_parameters[5] / l_hyd_1  
-    E_1    = pd.Series(index = range(len(sns1)))
-    E_1[0]   = input_parameters[6]
-    e_min_1  = input_parameters[7]    
-    e_max_1  = input_parameters[8]    
-    alpha_1  = input_parameters[9]
-    Q_e_1    = pd.Series(index = range(len(sns1)))
-    Q_e_1[0]   = 1
+    l_hyd_1     = input_parameters[4]
+    k_e_1       = input_parameters[5] / l_hyd_1  
+    E_1         = [0] * (len(sns1) + 1)
+    E_1[0]      = input_parameters[6]    
+    e_min_1     = input_parameters[7]    
+    e_max_1     = input_parameters[8]    
+    alpha_1     = input_parameters[9]
+    Q_e_1       = [0] * (len(sns1) + 1)
+    Q_e_1[0]    = 1
 
     # to Baseflow storage
-    k_is_1   = input_parameters[10]   
-    Q_is_1    = pd.Series(index = range(len(sns1)))
-    Q_is[0]   = 1
+    k_is_1      = input_parameters[10]   
+    Q_is_1      = [0] * (len(sns1) + 1)
+    Q_is[0]     = 1
 
     # secondary springs
-    k_sec_1  = input_parameters[11]
-    e_sec_1  = input_parameters[12]       
-    Q_sec_1    = pd.Series(index = range(len(sns1)))
-    Q_sec_1[0]   = 1
+    k_sec_1     = input_parameters[11]
+    e_sec_1     = input_parameters[12]       
+    Q_sec_1     = [0] * (len(sns1) + 1)
+    Q_sec_1[0]  = 1
 
 
     ### Hydrotope 2 #####
-    l_hyd_2 = input_parameters[14]
-    k_e_2    = input_parameters[15] / l_hyd_2   
-    E_2    = pd.Series(index = range(len(sns1)))
-    E_2[0]   = input_parameters[16]
-    e_min_2  = input_parameters[17]
-    e_max_2  = input_parameters[18]
-    alpha_2  = input_parameters[19]
-    Q_e_2    = pd.Series(index = range(len(sns1)))
-    Q_e_2[0]   = 1
+    l_hyd_2     = input_parameters[14]
+    k_e_2       = input_parameters[15] / l_hyd_2   
+    E_2         = [0] * (len(sns1) + 1)
+    E_2[0]      = input_parameters[16]
+    e_min_2     = input_parameters[17]
+    e_max_2     = input_parameters[18]
+    alpha_2     = input_parameters[19]
+    Q_e_2       = [0] * (len(sns1) + 1)
+    Q_e_2[0]    = 1
 
     # to Baseflow storage
-    k_is_2   = input_parameters[20]
-    Q_is_2    = pd.Series(index = range(len(sns1)))
-    Q_is_2[0] = 1
+    k_is_2      = input_parameters[20]
+    Q_is_2      = [0] * (len(sns1) + 1)
+    Q_is_2[0]   = 1
 
     # secondary springs
-    k_sec_2  = input_parameters[21]
-    e_sec_2  = input_parameters[22]
-    Q_sec_2    = pd.Series(index = range(len(sns1)))
-    Q_sec_2[0]   = 1
+    k_sec_2     = input_parameters[21]
+    e_sec_2     = input_parameters[22]
+    Q_sec_2     = [0] * (len(sns1) + 1)
+    Q_sec_2[0]  = 1
 
 
     ### Hydrotope 3 ##### 
-    l_hyd_3 = input_parameters[24]
-    k_e_3    = input_parameters[25] / l_hyd_3   
-    E_3    = pd.Series(index = range(len(sns1)))
-    E_3[0]   = input_parameters[26]
-    e_min_3  = input_parameters[27]    
-    e_max_3  = input_parameters[28]    
-    alpha_3  = input_parameters[29]
-    Q_e_3    = pd.Series(index = range(len(sns1)))
-    Q_e_3[0]   = 1
+    l_hyd_3     = input_parameters[24]
+    k_e_3       = input_parameters[25] / l_hyd_3   
+    E_3         = [0] * (len(sns1) + 1)
+    E_3[0]      = input_parameters[26]
+    e_min_3     = input_parameters[27]    
+    e_max_3     = input_parameters[28]    
+    alpha_3     = input_parameters[29]
+    Q_e_3       = [0] * (len(sns1) + 1)
+    Q_e_3[0]    = 1
 
     # to Baseflow storage
-    k_is_3   = input_parameters[30]
-    Q_is_3    = pd.Series(index = range(len(sns1)))
+    k_is_3      = input_parameters[30]
+    Q_is_3      = [0] * (len(sns1) + 1)
     Q_is_3[0]   = 1
 
     # secondary springs
-    k_sec_3  = input_parameters[31]
-    e_sec_3  = input_parameters[32]
-    Q_sec_3    = pd.Series(index = range(len(sns1)))
-    Q_sec_3[0]   = 1
+    k_sec_3     = input_parameters[31]
+    e_sec_3     = input_parameters[32]
+    Q_sec_3     = [0] * (len(sns1) + 1)
+    Q_sec_3[0]  = 1
 
 
     ### Hydrotope 4 #####
-    l_hyd_4 = input_parameters[34]
-    k_e_4    = input_parameters[35] / l_hyd_4   
-    E_4    = pd.Series(index = range(len(sns1)))
-    E_4[0]   = input_parameters[36]
-    e_min_4  = input_parameters[37]
-    e_max_4  = input_parameters[38]
-    alpha_4  = input_parameters[39]
-    Q_e_4    = pd.Series(index = range(len(sns1)))
-    Q_e_4[0]   = 1
+    l_hyd_4     = input_parameters[34]
+    k_e_4       = input_parameters[35] / l_hyd_4   
+    E_4         = [0] * (len(sns1) + 1)
+    E_4[0]      = input_parameters[36]
+    e_min_4     = input_parameters[37]
+    e_max_4     = input_parameters[38]
+    alpha_4     = input_parameters[39]
+    Q_e_4       = [0] * (len(sns1) + 1)
+    Q_e_4[0]    = 1
 
     # to Baseflow storage
-    k_is_4   = input_parameters[40]    
-    Q_is_4    = pd.Series(index = range(len(sns1)))
+    k_is_4      = input_parameters[40]    
+    Q_is_4      = [0] * (len(sns1) + 1)
     Q_is_4[0]   = 1
 
     # secondary springs
-    k_sec_4  = input_parameters[41]
-    e_sec_4  = input_parameters[42]
-    Q_sec_4    = pd.Series(index = range(len(sns1)))
-    Q_sec_4[0]   = 1
+    k_sec_4     = input_parameters[41]
+    e_sec_4     = input_parameters[42]
+    Q_sec_4     = [0] * (len(sns1) + 1)
+    Q_sec_4[0]  = 1
 
     #############################################
     ### Model ###################################
@@ -273,9 +267,10 @@ def lukars(sink_n_source_hyd_1, sink_n_source_hyd_2, sink_n_source_hyd_3,\
         Q_e_4[i+1] = 0 
       
         
-      Q_e[i+1] = Q_e_1[i+1] + Q_e_2[i+1] + Q_e_3[i+1] + Q_e_4[i+1]
+      Q_e[i+1]   = Q_e_1[i+1] + Q_e_2[i+1] + Q_e_3[i+1] + Q_e_4[i+1]
       
       Q_tot[i+1] = Q_e[i+1] + Q_b[i+1]
       
-    Q_tot = Q_tot / 86400
+    Q_tot[:]     = [x / 86400 for x in Q_tot]
+    Q_tot        = Q_tot[0:len(sns1)]
     return(Q_tot);
