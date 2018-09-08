@@ -28,7 +28,7 @@ Required input: model_period, precipitation_ts (optional: et_model, snow_model, 
 temperature_ts, t_threshold). Note that, if interception_losses and/or the snow_model are defined, the interception_threshold 
 and the temperature_ts and t_threshold need to be defined as well.
 
-model.py
+model.py:
 The model code of LuKARS as presented in Bittner et al. (2018).
 Required input: sink_n_source_hyd_1, sink_n_source_hyd_2, sink_n_source_hyd_3, sink_n_source_hyd_4 and input_parameters.
 Note that the current version of the model only allows to simulate 4 hydrotopes (as presented for the Kerschbaum spring in Waidhofen,
@@ -38,7 +38,7 @@ the model is given in kerschbaum_input.txt. The relevant time series for this mo
 
 References:
 
-Bittner, D. Sheikhy Narany, T., Kohl, B., Disse, M., Chiogna, G., 2018. Modeling the hydrological impact of land 
+Bittner, D., Sheikhy Narany, T., Kohl, B., Disse, M., Chiogna, G., 2018. Modeling the hydrological impact of land 
 use change in a dolomite-dominated karst system. Journal of Hydrology (under review).
 
 DVWK, 1996. DVWK-Merkblatt 238/1996. Ermittlung der Verdunstung von Land- und Wasserflächen, Bonn.
